@@ -1,0 +1,25 @@
+//User function Template for C++
+//Rest of the code was pre written
+
+queue<ll> modifyQueue(queue<ll> q, int k)
+{
+    //add code here.
+    queue<ll> n;
+    int arr[k];
+    for(int i=0;i<k;i++)
+    {
+        arr[i]=q.front();
+        q.pop();
+    }
+    for(int i=k-1;i>=0;i--)
+    {
+        n.push(arr[i]);
+    }
+    while(!q.empty())
+    {
+        n.push(q.front());
+        q.pop();
+    }
+    return n;
+    
+}
