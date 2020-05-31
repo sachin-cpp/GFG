@@ -1,0 +1,54 @@
+
+/* You are required to complete this method */
+
+// return the minimum number of swaps required to sort the arra
+void swap(int arr[] , int a,int b)
+{
+    for(int i=0;i<b;i++)
+    {
+        if(arr[i] == a)
+        {
+            int temp = arr[i];
+            arr[i] = arr[b];
+            arr[b] = temp;
+        }
+    }
+}
+
+int max(int arr[] , int N)
+{
+    int m = arr[0];
+    for(int i=0;i<N;i++)
+    {
+        if(arr[i] > m)
+        {
+            m = arr[i];
+        }
+    }
+    return m;
+}
+int minSwaps(int arr[], int N)
+{
+    /*Your code here */
+    int l=N;
+    int count=0;
+    for(int i=N;i>0;i--)
+    {
+        int m = max(arr, i);
+        //cout<<"i"<<i<<"i";
+        if(arr[i- 1] != m )
+        {
+            swap(arr,m,i- 1);
+            //cout<<m<<" ";
+            /*
+            for(int j=0;j<l;j++)
+            {
+                cout<<arr[j];
+            }
+            cout<<"     "; 
+            */
+            count++;
+        }
+    }
+    return count;
+}
