@@ -1,0 +1,60 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+typedef long long int ll;
+
+// Function to return maximum of sum without adjacent elements
+int max(int a,int b)
+{
+    if(a>b)
+    {
+        return a;
+    }
+    else
+    {
+        return b;
+    }
+}
+ll FindMaxSum(ll arr[], ll n)
+{
+    //1st way ---------
+    /*
+    int ex_curr;
+    int in_curr;
+    int ex_prev=0;
+    int in_prev = arr[0];
+    for(int i=1;i<n;i++)
+    {
+        in_curr = ex_prev + arr[i];
+        ex_curr = max(in_prev , ex_prev);
+        ex_prev = ex_curr;
+        in_prev = in_curr;
+    }
+    return max(in_curr,ex_curr);
+    */
+    //  2nd way ----------
+    int dp[n];
+    dp[0] = arr[0];
+    dp[1] = max(arr[0] , arr[1]);
+    for(int i=2;i<n;i++)
+    {
+        dp[i] = max(arr[i] + dp[i - 2] , dp[i - 1]);
+    }
+    return dp[n-1];
+}
+
+int main()
+{
+	int t;
+	cin>>t;
+	while(t--)
+	{
+		ll n;
+		cin>>n;
+		ll a[n];
+		for(ll i=0;i<n;++i)
+			cin>>a[i];
+		cout<<FindMaxSum(a,n)<<endl;
+	}
+	return 0;
+}
