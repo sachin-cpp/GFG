@@ -1,0 +1,33 @@
+//help from coding ninjas 
+#include <iostream>
+using namespace std;
+
+void fun(string in,string out)
+{
+    /*
+    if(out.length() == 3)
+    {
+        return;
+    }
+    */
+    if(in.length() == 0)
+    {
+        cout<<out<<" ";
+        return;
+    }
+    
+    fun(in.substr(1), out);         //string ke pehle word ko chod ke baki ki string dea ..substr
+    fun(in.substr(1), out + in[0]);
+    
+   
+}
+
+int main() 
+{
+	string in = "abc";
+	string out = "";
+	int n= in.length();
+	fun(in,out);
+	
+	return 0;
+}
