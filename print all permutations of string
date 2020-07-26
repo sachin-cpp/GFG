@@ -1,0 +1,28 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+
+
+void fun(string str, int r , int l)
+{
+    if(l==r)
+    {
+        cout<<str<<" ";
+    }
+    
+    for(int i=r;i<=l;i++)
+    {
+        swap(str[i],str[r]);
+        fun(str, r+1 , l);
+        swap(str[i],str[r]);
+    }
+}
+
+int main() 
+{
+	string str = "abc";
+	int l = str.length();
+	fun(str,0,l-1);
+	
+	return 0;
+}
