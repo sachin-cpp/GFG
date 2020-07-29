@@ -1,0 +1,33 @@
+
+// arr : 1st given array
+// brr : 2nd given array
+// n : size of both the arrays
+
+bool check(vector<ll> arr, vector<ll> brr, int n) 
+{
+    unordered_map<int,int> u1;
+    //unordered_set<int> u2;
+    
+    for(int i = 0;i<n;i++)
+    {
+        u1[arr[i]++];
+    }
+    for(int i=0;i<n;i++)
+    {
+        if(u1.find(brr[i]) == u1.end())
+        {
+            return false;
+        }
+        else
+        {
+            u1[brr[i]]--;
+        }
+        
+        if(u1[brr[i]] == 0)
+        {
+            return false;
+        }
+        //u1[brr[i]]--;
+    }
+    return true;
+}
