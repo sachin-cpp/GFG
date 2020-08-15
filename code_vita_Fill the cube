@@ -1,0 +1,154 @@
+#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+
+int main() {
+	//cout<<"GfG!";
+	int n;
+	cin>>n;
+	int arr[n][n];
+	int r_arr[n];
+	int c_arr[n];
+	for(int i=0;i<n;i++)
+	{
+	    int rs = 0;
+	    for(int j=0;j<n;j++)
+	    {
+	        int x;
+	        cin>>x;
+	        arr[i][j] = x;
+	        rs += x;
+	    }
+	    r_arr[i] = n - rs;
+	}
+	
+	for(int i=0;i<n;i++)
+	{
+	    cout<<r_arr[i];
+	}
+	cout<<endl;
+	
+    for(int i=0;i<n;i++)
+	{
+	    int cs = 0;
+	    for(int j=0;j<n;j++)
+	    {
+	        cs += arr[j][i];
+	    }
+	    c_arr[i] = n - cs;
+	}
+	
+	for(int i=0;i<n;i++)
+	{
+	    cout<<c_arr[i];
+	}
+	cout<<endl;
+
+    //int m=0;
+    int max_val = 0;
+    for(int i=0;i<n;i++)
+    {
+        int count = 0;
+        for(int j=i;j<r_arr[i]+i && j < n;j++)
+        {
+            //if(r_arr[j] >= r_arr[i])
+            if(r_arr[i] <= r_arr[j])
+            {
+                count++;
+            }
+            else
+            {
+                break;
+            }
+        }
+        
+        
+        //m = count;
+        if(count>max_val){
+            max_val=count;
+        }
+        
+        
+    }
+    
+    
+    for(int i=0;i<n;i++)
+    {
+        int count = 0;
+        for(int j=i;j>i-r_arr[i] && j>=0;j--)
+        {
+            //if(r_arr[j] >= r_arr[i])
+            if(r_arr[i] <= r_arr[j])
+            {
+                count++;
+            }
+            else
+            {
+                break;
+            }
+        }
+        
+        if(count>max_val){
+            max_val=count;
+        }
+    }
+    
+    cout << max_val<<endl;
+    
+    
+    ////////////////////////////////////////////////
+    
+    
+    
+    //m=0;
+    int max_val_c = 0;
+    for(int i=0;i<n;i++)
+    {
+        int count = 0;
+        for(int j=i;j<c_arr[i]+i && j < n;j++)
+        {
+            //if(r_arr[j] >= r_arr[i])
+            if(c_arr[i] <= c_arr[j])
+            {
+                count++;
+            }
+            else
+            {
+                break;
+            }
+        }
+        //m = count;
+        if(count>max_val_c){
+            max_val_c=count;
+        }
+        
+        
+    }
+    for(int i=0;i<n;i++)
+    {
+        int count = 0;
+        for(int j=i;j>i-r_arr[i] && j>=0;j--)
+        {
+            //if(r_arr[j] >= r_arr[i])
+            if(c_arr[i] <= c_arr[j])
+            {
+                count++;
+            }
+            else
+            {
+                break;
+            }
+        }
+        
+        if(count>max_val_c){
+            max_val_c=count;
+        }
+    }
+    cout << max_val_c<<endl;
+    
+    cout<<max(max_val,max_val_c);
+    
+
+	
+	return 0;
+}
